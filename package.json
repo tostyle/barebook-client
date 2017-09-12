@@ -1,0 +1,61 @@
+{
+  "name": "central",
+  "description": "central-client",
+  "version": "0.1.0",
+  "author": "thanes@zanroo.com",
+  "dependencies": {
+    "bootstrap": "3",
+    "lodash": "^4.17.4",
+    "prop-types": "^15.5.0",
+    "react": "^15.5.4",
+    "react-bootstrap": "^0.31.2",
+    "react-dom": "^15.5.4",
+    "react-redux": "^5.0.5",
+    "react-router-dom": "^4.1.1",
+    "recompose": "^0.23.4",
+    "redux": "^3.6.0",
+    "redux-actions": "^2.0.3",
+    "redux-thunk": "^2.2.0",
+    "reselect": "^3.0.1",
+    "styled-components": "^2.0.0"
+  },
+  "devDependencies": {
+    "enzyme": "^2.9.1",
+    "eslint-config-prettier": "^2.3.0",
+    "husky": "^0.14.3",
+    "jest-enzyme": "^3.6.1",
+    "lint-staged": "^4.0.2",
+    "node-plop": "^0.5.5",
+    "node-sass-chokidar": "^0.0.3",
+    "plop": "^1.7.4",
+    "prettier": "^1.5.3",
+    "react-scripts": "^1.0.10",
+    "react-test-renderer": "^15.6.1",
+    "redux-devtools-extension": "^2.13.2",
+    "sinon": "^3.1.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "starts": "node scripts/starts",
+    "builds": "node scripts/builds",
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "prettier": "prettier --single-quote --trailing-comma es5 --no-semi",
+    "format": "npm run prettier -- --write '{,!(build)/**/}*.js'",
+    "precommit": "lint-staged",
+    "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
+  },
+  "lint-staged": {
+    "{,!(build)/**/}*.js": [
+      "npm run prettier -- --write",
+      "git add"
+    ]
+  },
+  "engines": {
+    "npm": ">=4",
+    "node": ">=6"
+  }
+}

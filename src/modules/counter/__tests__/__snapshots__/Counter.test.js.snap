@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`example test renders toMatchSnapshot with Enzyme 1`] = `
+<pure(Counter)>
+  <Counter
+    counter={0}
+    decrement={[Function]}
+    increment={[Function]}
+    incrementIfOdd={[Function]}
+  >
+    <section>
+      <styled.p>
+        <p
+          className="sc-bdVaJa dQSkNS"
+        >
+          To get started, edit 
+          <code>
+            src/routes/index.js 
+          </code>
+          and save to reload.
+        </p>
+      </styled.p>
+      <p>
+        Clicked: 
+        0
+         times 
+        <button
+          onClick={[Function]}
+        >
+          +
+        </button>
+         
+        <button
+          onClick={[Function]}
+        >
+          -
+        </button>
+         
+        <button
+          onClick={[Function]}
+        >
+          Increment if odd
+        </button>
+      </p>
+    </section>
+  </Counter>
+</pure(Counter)>
+`;
+
+exports[`example test renders toMatchSnapshot with Jest 1`] = `
+<section>
+  <p
+    className="sc-bdVaJa dQSkNS"
+  >
+    To get started, edit 
+    <code>
+      src/routes/index.js 
+    </code>
+    and save to reload.
+  </p>
+  <p>
+    Clicked: 
+    0
+     times 
+    <button
+      onClick={[Function]}
+    >
+      +
+    </button>
+     
+    <button
+      onClick={[Function]}
+    >
+      -
+    </button>
+     
+    <button
+      onClick={[Function]}
+    >
+      Increment if odd
+    </button>
+  </p>
+</section>
+`;
