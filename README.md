@@ -1,4 +1,3 @@
-# Boilerplate for zanroo web client
 [See full documents at](./docs/create-redux-app)
 
 [![generator-create-redux-app](https://img.shields.io/badge/built%20with-generator--create--redux--app-brightgreen.svg)](https://github.com/jonidelv/generator-create-redux-app)
