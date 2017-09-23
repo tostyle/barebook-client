@@ -17,8 +17,8 @@ module.exports = {
    * @example { htmls: {} }
    */
   htmls: {
-    index: 'public/index.html',
-    foo: 'public/foo.html',
+    // index: 'public/index.html',
+    // foo: 'public/foo.html',
     // bar: 'public/bar.html',
     // baz: 'public/baz.html',
   },
