@@ -7,6 +7,7 @@ module.exports = {
   entrys: {
     index: 'src/index.js',
     foo: 'src/foo.js',
+    pdf: 'src/pdf.js',
     // bar: 'src/bar.js',
     // baz: 'src/baz.js',
   },
@@ -17,6 +18,7 @@ module.exports = {
    * @example { htmls: {} }
    */
   htmls: {
+    pdf: 'public/pdf.html',
     // index: 'public/index.html',
     // foo: 'public/foo.html',
     // bar: 'public/bar.html',

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import Header from '../modules/counter/CounterHeader'
 import { Bundle } from '../utils'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import styled from 'styled-components'
+import CreateProjectContainer from '../entries/createProject/root'
 
 const Container = styled.div`text-align: center;`
 
@@ -15,11 +15,11 @@ class Routes extends Component {
   render() {
     return (
       <Router>
-        <Container>
-          <Header />
+        <div>
           <Route exact path="/" component={CounterContainer} />
-          <Route path="/example" component={CounterContainer} />
-        </Container>
+          <Route path="/project/create" component={CreateProjectContainer} />
+          <Route path="/create" component={CounterContainer} />
+        </div>
       </Router>
     )
   }

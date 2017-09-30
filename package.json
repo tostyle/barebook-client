@@ -4,11 +4,13 @@
   "version": "0.1.0",
   "author": "thanes@zanroo.com",
   "dependencies": {
+    "axios": "0.16.2",
     "bootstrap": "3",
     "lodash": "^4.17.4",
+    "pdfjs-dist": "1.9.589",
     "prop-types": "^15.5.0",
     "react": "^15.5.4",
-    "react-bootstrap": "^0.31.2",
+    "react-bootstrap": "0.31.3",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.1",
@@ -48,6 +50,7 @@
     "precommit": "lint-staged",
     "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
   },
+  "proxy": "http://localhost:4040",
   "lint-staged": {
     "{,!(build)/**/}*.js": [
       "npm run prettier -- --write",
