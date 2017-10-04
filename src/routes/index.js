@@ -3,6 +3,7 @@ import { Bundle } from '../utils'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import styled from 'styled-components'
 import CreateProjectContainer from '../entries/createProject/root'
+import UploadProjectContainer from '../modules/uploadProject/UploadProjectContainer'
 
 const Container = styled.div`text-align: center;`
 
@@ -18,7 +19,7 @@ class Routes extends Component {
         <div>
           <Route exact path="/" component={CounterContainer} />
           <Route path="/project/create" component={CreateProjectContainer} />
-          <Route path="/create" component={CounterContainer} />
+          <Route path="/project/upload" component={UploadProjectContainer} />
         </div>
       </Router>
     )
