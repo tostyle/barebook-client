@@ -1,6 +1,7 @@
 import { SET_ORDER } from '../constants/ActionTypes'
 
 const getInitialState = () => ({
+  _id: '',
   name: '',
   project_type: '',
   objective_type: '',
@@ -27,10 +28,14 @@ const getInitialState = () => ({
   binding_type: '',
   bw_page: '',
   color_page: '',
+  color: {
+    color_pages: [],
+  },
   files: {
     front_cover: '',
     back_cover: '',
     spine: '',
+    book: '',
   },
   pages: [],
   technics: [],

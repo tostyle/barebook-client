@@ -10,6 +10,7 @@ const UploadProject = ({
   backCover,
   spine,
   pages,
+  files,
 }) => {
   return (
     <div>
@@ -17,25 +18,25 @@ const UploadProject = ({
       <p>ปกหน้า</p>
       <Dropzone onDrop={onUploadFrontCover} style={{}} multiple={false}>
         <button>Upload</button>
-        {frontCover &&
+        {files.front_cover &&
           <p>
-            {frontCover.name}
+            {files.front_cover}
           </p>}
       </Dropzone>
       <p>ปกหลัง</p>
       <Dropzone onDrop={onUploadBackCover} style={{}} multiple={false}>
         <button>Upload</button>
-        {backCover &&
+        {files.back_cover &&
           <p>
-            {backCover.name}
+            {files.back_cover}
           </p>}
       </Dropzone>
       <p>สันหนังสือ</p>
       <Dropzone onDrop={onUploadSpine} style={{}} multiple={false}>
         <button>Upload</button>
-        {spine &&
+        {files.spine &&
           <p>
-            {spine.name}
+            {files.spine}
           </p>}
       </Dropzone>
       <p>ไฟล์สำหรับเนื้อใน</p>
@@ -44,7 +45,7 @@ const UploadProject = ({
         {pages.length > 0 &&
           pages.map((page, index) =>
             <p key={index}>
-              {page.name}
+              {page}
             </p>
           )}
       </Dropzone>
