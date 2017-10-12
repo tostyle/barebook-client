@@ -7,19 +7,32 @@ const PreviewPdf = ({
   pageNumber,
   nextPage,
   previousPage,
-}) =>
-  <div>
-    <Document
-      file="http://localhost:4040/api/pdf"
-      onLoadSuccess={onDocumentLoad}
-    >
-      <Page pageNumber={pageNumber} scale={1.0} />
-      <Page pageNumber={pageNumber + 1} scale={1.0} />
-    </Document>
-    <p>
-      Page {pageNumber} of {numPages}
-    </p>
-    <button onClick={previousPage}>Prev</button>
-    <button onClick={nextPage}>Net</button>
-  </div>
+  checkedPage,
+  onChangeColorPage,
+  colorPages,
+}) => {
+  return (
+    <div>
+      <Document
+        file="http://localhost:4040/api/pdf"
+        onLoadSuccess={onDocumentLoad}
+      >
+        <Page pageNumber={pageNumber} scale={1.0} />
+        <Page pageNumber={pageNumber + 1} scale={1.0} />
+      </Document>
+      <p>
+        Page {pageNumber} of {numPages}
+      </p>
+      <button onClick={previousPage}>Prev</button>
+      <button onClick={nextPage}>Next</button>
+      <input
+        type="checkbox"
+        onChange={onChangeColorPage}
+        checked={colorPages.includes(pageNumber)}
+      />
+      {'xxx'}
+      {!!colorPages.includes(pageNumber)}
+    </div>
+  )
+}
 export default PreviewPdf

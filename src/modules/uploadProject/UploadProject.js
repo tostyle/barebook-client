@@ -11,6 +11,7 @@ const UploadProject = ({
   spine,
   pages,
   files,
+  history,
 }) => {
   return (
     <div>
@@ -49,6 +50,7 @@ const UploadProject = ({
             </p>
           )}
       </Dropzone>
+      <button onClick={() => history.push('/project/preview')}>Submit</button>
     </div>
   )
 }
