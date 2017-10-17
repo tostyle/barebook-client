@@ -5,10 +5,14 @@ import axios from 'axios'
 import UploadProject from './UploadProject'
 import { setOrder } from '../../actions/order'
 
-const upload = type => async files => {
-  const url = type === 'pages' ? '/api/upload/1/multiple' : '/api/upload/1'
+const upload = (type, orderId) => async files => {
+  const url =
+    type === 'pages'
+      ? `/api/upload/${orderId}/multiple`
+      : `/api/upload/${orderId}`
   const formData = new FormData()
   formData.append('type', type)
+  formData.append('orderId', orderId)
   if (type === 'pages') {
     files.forEach((file, index) => {
       formData.append(`files`, file)
@@ -29,40 +33,55 @@ const upload = type => async files => {
 }
 
 const handles = {
-  onUploadFrontCover: ({ setOrderFiles }) => async files => {
+  onUploadFrontCover: ({ setOrderFiles, orderId }) => async files => {
     const fileType = 'front_cover'
-    const uploadedFile = await upload(fileType)(files)
+    const uploadedFile = await upload(fileType, orderId)(files)
     if (uploadedFile) {
       setOrderFiles(fileType, uploadedFile.fileName)
     }
   },
-  onUploadBackCover: ({ setOrderFiles }) => async files => {
+  onUploadBackCover: ({ setOrderFiles, orderId }) => async files => {
     const fileType = 'back_cover'
-    const uploadedFile = await upload(fileType)(files)
+    const uploadedFile = await upload(fileType, orderId)(files)
     if (uploadedFile) {
       setOrderFiles(fileType, uploadedFile.fileName)
     }
   },
-  onUploadSpine: ({ setOrderFiles }) => async files => {
+  onUploadSpine: ({ setOrderFiles, orderId }) => async files => {
     const fileType = 'spine'
-    const uploadedFile = await upload(fileType)(files)
+    const uploadedFile = await upload(fileType, orderId)(files)
     if (uploadedFile) {
       setOrderFiles(fileType, uploadedFile.fileName)
     }
   },
-  onUploadPages: ({ setOrder, pages }) => async files => {
+  onUploadPages: ({ setOrder, pages, orderId }) => async files => {
     const fileType = 'pages'
-    const uploadedFiles = await upload(fileType)(files)
+    const uploadedFiles = await upload(fileType, orderId)(files)
     const fileNames = uploadedFiles.map(file => file.filename)
     setOrder({
       pages: pages.concat(fileNames),
     })
+  },
+  onClickMergeBook: props => async () => {
+    try {
+      const { data } = await axios({
+        method: 'POST',
+        url: `/api/upload/${props.orderId}/merge`,
+        data: { sources: props.pages },
+      })
+      if (data.result) {
+        props.history.push('/project/preview')
+      }
+    } catch (e) {
+      console.log(e)
+    }
   },
 }
 
 const mapState = state => ({
   files: state.order.files,
   pages: state.order.pages,
+  orderId: state.order._id,
 })
 const mapDispatch = dispatch => ({
   setOrder: bindActionCreators(setOrder, dispatch),

@@ -1,4 +1,10 @@
-import { compose, withHandlers, withState, lifecycle } from 'recompose'
+import {
+  compose,
+  withHandlers,
+  withState,
+  lifecycle,
+  withProps,
+} from 'recompose'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { remove } from 'lodash'
@@ -34,6 +40,7 @@ const mapState = state => {
   const colorPages = state.order.color.color_pages
   return {
     colorPages,
+    orderId: state.order._id,
   }
 }
 
@@ -41,8 +48,15 @@ const mapDispatch = dispatch => ({
   setOrder: bindActionCreators(setOrder, dispatch),
 })
 
+const newProps = props => {
+  return {
+    bookPath: `http://localhost:4040/api/orders/${props.orderId}/book`,
+  }
+}
+
 const enhance = compose(
   connect(mapState, mapDispatch),
+  withProps(newProps),
   withState('numPages', 'setNumPages', null),
   withState('pageNumber', 'setPageNumber', 1),
   withHandlers(handlers)

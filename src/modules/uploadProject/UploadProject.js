@@ -12,6 +12,7 @@ const UploadProject = ({
   pages,
   files,
   history,
+  onClickMergeBook,
 }) => {
   return (
     <div>
@@ -50,7 +51,7 @@ const UploadProject = ({
             </p>
           )}
       </Dropzone>
-      <button onClick={() => history.push('/project/preview')}>Submit</button>
+      <button onClick={onClickMergeBook}>Submit</button>
     </div>
   )
 }

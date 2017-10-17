@@ -1,4 +1,4 @@
-import { SET_ORDER } from '../constants/ActionTypes'
+import { SET_ORDER, CREATE_PROJECT_SUCCESS } from '../constants/ActionTypes'
 
 const getInitialState = () => ({
   _id: '',
@@ -51,6 +51,8 @@ const order = (state = getInitialState(), action) => {
   switch (action.type) {
     case SET_ORDER:
       return Object.assign({}, state, action.payload)
+    case CREATE_PROJECT_SUCCESS:
+      return Object.assign({}, state, { _id: action.payload })
     default:
       return state
   }

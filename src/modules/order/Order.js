@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Order = ({ order, history }) => {
+const Order = ({ order, onClickCreateProject }) => {
   return (
     <div>
       <p>
@@ -41,9 +41,7 @@ const Order = ({ order, history }) => {
         <input type="text" />
         <span>เล่ม</span>
       </div>
-      <button onClick={() => history.push(`/project/upload`)}>
-        อัพโหลดไฟล์งาน
-      </button>
+      <button onClick={onClickCreateProject}>อัพโหลดไฟล์งาน</button>
     </div>
   )
 }
