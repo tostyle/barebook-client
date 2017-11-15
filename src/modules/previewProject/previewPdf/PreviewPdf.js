@@ -28,7 +28,6 @@ const PreviewPdf = ({
         onChange={onChangeColorPage}
         checked={colorPages.includes(pageNumber)}
       />
-      {'xxx'}
       {!!colorPages.includes(pageNumber)}
     </div>
   )

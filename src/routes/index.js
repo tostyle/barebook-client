@@ -5,6 +5,9 @@ import styled from 'styled-components'
 import CreateProjectContainer from '../entries/createProject/root'
 import UploadProjectContainer from '../modules/uploadProject/UploadProjectContainer'
 import PreviewProjectContainer from '../modules/previewProject/PreviewProjectContainer'
+import TechnicProjectContainer from '../modules/technicProject/TechnicProjectContainer'
+import DeliveryProjectContainer from '../modules/deliveryProject/DeliveryProjectContainer'
+import PaymentProjectContainer from '../modules/paymentProject/PaymentProjectContainer'
 
 const Container = styled.div`text-align: center;`
 
@@ -22,6 +25,12 @@ class Routes extends Component {
           <Route path="/project/create" component={CreateProjectContainer} />
           <Route path="/project/upload" component={UploadProjectContainer} />
           <Route path="/project/preview" component={PreviewProjectContainer} />
+          <Route path="/project/technic" component={TechnicProjectContainer} />
+          <Route
+            path="/project/delivery"
+            component={DeliveryProjectContainer}
+          />
+          <Route path="/project/payment" component={PaymentProjectContainer} />
         </div>
       </Router>
     )

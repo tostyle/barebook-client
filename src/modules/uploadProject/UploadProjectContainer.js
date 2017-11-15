@@ -4,36 +4,16 @@ import { connect } from 'react-redux'
 import axios from 'axios'
 import UploadProject from './UploadProject'
 import { setOrder } from '../../actions/order'
+import { Upload } from '../../utils'
 
-const upload = (type, orderId) => async files => {
-  const url =
-    type === 'pages'
-      ? `/api/upload/${orderId}/multiple`
-      : `/api/upload/${orderId}`
-  const formData = new FormData()
-  formData.append('type', type)
-  formData.append('orderId', orderId)
-  if (type === 'pages') {
-    files.forEach((file, index) => {
-      formData.append(`files`, file)
-    })
-  } else {
-    formData.append('file', files[0])
-  }
-  try {
-    const { data } = await axios({
-      method: 'POST',
-      url,
-      data: formData,
-    })
-    return data
-  } catch (e) {
-    return false
-  }
-}
+const { isImage, convertFileToPDF, upload } = Upload
 
 const handles = {
   onUploadFrontCover: ({ setOrderFiles, orderId }) => async files => {
+    const uploadedFileIsImage = isImage(files[0].type)
+    if (uploadedFileIsImage) {
+      files[0] = await convertFileToPDF(files[0])
+    }
     const fileType = 'front_cover'
     const uploadedFile = await upload(fileType, orderId)(files)
     if (uploadedFile) {
@@ -41,6 +21,10 @@ const handles = {
     }
   },
   onUploadBackCover: ({ setOrderFiles, orderId }) => async files => {
+    const uploadedFileIsImage = isImage(files[0].type)
+    if (uploadedFileIsImage) {
+      files[0] = await convertFileToPDF(files[0])
+    }
     const fileType = 'back_cover'
     const uploadedFile = await upload(fileType, orderId)(files)
     if (uploadedFile) {
@@ -48,6 +32,10 @@ const handles = {
     }
   },
   onUploadSpine: ({ setOrderFiles, orderId }) => async files => {
+    const uploadedFileIsImage = isImage(files[0].type)
+    if (uploadedFileIsImage) {
+      files[0] = await convertFileToPDF(files[0])
+    }
     const fileType = 'spine'
     const uploadedFile = await upload(fileType, orderId)(files)
     if (uploadedFile) {
@@ -55,8 +43,19 @@ const handles = {
     }
   },
   onUploadPages: ({ setOrder, pages, orderId }) => async files => {
+    const convertedFiles = await Promise.all(
+      files.map(async (file, index) => {
+        const uploadedFileIsImage = isImage(file.type)
+        if (uploadedFileIsImage) {
+          const convertedFile = await convertFileToPDF(file)
+          return convertedFile
+        } else {
+          return file
+        }
+      })
+    )
     const fileType = 'pages'
-    const uploadedFiles = await upload(fileType, orderId)(files)
+    const uploadedFiles = await upload(fileType, orderId)(convertedFiles)
     const fileNames = uploadedFiles.map(file => file.filename)
     setOrder({
       pages: pages.concat(fileNames),
