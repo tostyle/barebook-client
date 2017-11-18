@@ -1,33 +1,28 @@
-import React, { Component } from 'react'
-import NoSSR from 'react-no-ssr'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import React from 'react'
+import styled from 'styled-components'
 
-const Helloworld = () => <div>Helloworld</div>
-const HelloCreate = () => <div>project create</div>
-const HelloUpload = () => <div>project upload</div>
-const HelloPreview = () => <div>project preview</div>
+import Layout from '../src/components/MyLayout.js'
+import PageLayout1 from '../src/components/PageLayout1'
+import PageLayout2 from '../src/components/PageLayout2'
+import PageLayout3 from '../src/components/PageLayout3'
+import PageLayout4 from '../src/components/PageLayout4'
+import PageLayout5 from '../src/components/PageLayout5'
+import PageLayout6 from '../src/components/PageLayout6'
+import PageLayout7 from '../src/components/PageLayout7'
 
-class Routes extends Component {
-  // render () {
-  //   return (<div>HSSSSSSSSSSSSSS</div>)
-  // }
-  render() {
-    return (
-      <NoSSR>
-        <Router>
-          <div>
-            <Link to={'/project/create'}>Create Proejct</Link>
-            <Route exact path="/" component={Helloworld} />
-            <Route path="/project/create" component={HelloCreate} />
-            <Route path="/project/upload" component={HelloUpload} />
-            <Route path="/project/preview" component={HelloPreview} />
-          </div>
-        </Router>
-      </NoSSR>
-    )
-  }
-}
+const Body = styled.div``
 
-// const App = () => (<div>Hello world</div>)
-
-export default Routes
+export default () =>
+  <Layout>
+    <Body>
+      <PageLayout1 />
+      <PageLayout2 />
+      <PageLayout3 />
+      <PageLayout4 />
+      <PageLayout5 />
+      <PageLayout6 />
+      <PageLayout6 />
+      <PageLayout6 />
+      <PageLayout7 />
+    </Body>
+  </Layout>
