@@ -7,19 +7,19 @@ const Body = styled.div`
   position: relative;
   background-color: #a6a6a6;
   width: 100%;
-  height: 400px;
+  height: 420px;
   text-align: center;
   padding: 50px 0;
   div {
     position: relative;
     color: black;
-    font-size: 56px;
+    font-size: 48px;
     font-weight: bold;
-    top: 100px;
+    top: 80px;
   }
   button {
     position: relative;
-    top: 200px;
+    top: 180px;
   }
 `
 

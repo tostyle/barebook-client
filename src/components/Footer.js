@@ -7,19 +7,22 @@ const Body = styled.div`
   background: linear-gradient(to right, #efcd38, #e5ab4a);
   color: black;
   position: relative;
-  padding: 120px 160px;
+  padding: 40px 0px;
 `
 const First = styled.div`
+  display: flex;
   > div {
-    display: inline-block;
+    justify-content: space-between;
+    /* display: inline-block; */
     max-width: 20%;
     margin: 0 64px;
   }
 `
 const Seccond = styled.div`
   position: relative;
-  top: 180px;
   width: 100%;
+  top: 40px;
+  padding: 0 30px;
   > div {
     display: inline-block;
     width: 50%;

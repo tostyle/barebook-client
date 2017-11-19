@@ -4,7 +4,7 @@ import TypeATumb from './customspage/TypeATumb'
 
 const Body = styled.div`
   margin: 80px;
-  display: block;
+  display: flex;
   position: relative;
   text-align: center;
 `

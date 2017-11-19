@@ -7,11 +7,15 @@ const Body = styled.div`
   display: block;
   position: relative;
   text-align: center;
+  > div {
+    display: flex;
+  }
 `
 
 const Head = styled.div`
   display: block;
-  text-align: center;
+  width: 100%;
+  justify-content: center;
   font-size: 48px;
 `
 
